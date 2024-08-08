@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Artist>
+@{
+    ViewData["Title"] = "Album | Add";
+}
+
+<h1>Add new album</h1>
+<form method="POST">
+    <div class="form-row">
+        <div class="form-group col-md-6 mb-2">
+            <label>Album Title</label>
+            <input class="form-control mb-2" type="text" name="title" placeholder="Title" required>
+            <label>Artist</label>
+            <select id="Artist" name="ArtistId" class="form-control">
+                <option selected disabled> Chhose an artist...</option>
+                @foreach (var artist in Model)
+                {
+                    <option value="@artist.Id">@artist.Name</option>
+                }
+            </select>
+            <label>Release Date</label>
+            <input class="form-control" type="date" name="release_date" placeholder="Release Date" required>
+        </div>
+        <button class="btn btn-primary">Add</button>
+    </div>
+</form>

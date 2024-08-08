@@ -1,0 +1,41 @@
+﻿@model MVCTest.ViewModels.MusicCreateViewModel
+ 
+@{
+    ViewData["Title"] = "Music | Add ";
+} 
+
+<h1>Create Music</h1>
+
+<form method="POST">
+    <div class="form-row"> 
+        <div class="form-group col-md-6 mb-2">
+            <label>Music Title</label>
+            <input class="form-control" type="text" name="Title" placeholder="Title" required>
+            <label>Genre</label>
+            <input class="form-control" type="text" name="Genre" placeholder="Genre" required>
+            <label>Release Date</label>
+            <input class="form-control" type="date" name="ReleaseDate" required>
+            <label>Cover</label>
+            <input class="form-control" type="text" name="Cover" placeholder="Cover" required>
+        </div>
+        <div class="form-group col-md-6 mb-2">
+            <label for="Artist">Artist</label>
+            <select id="Artist" name="ArtistId" class="form-control">
+                <option selected disabled> Chhose an artist...</option>
+                    @foreach (var artist in Model.Artists)
+                    {
+                        <option value="@artist.Id">@artist.Name</option>
+                    }
+            </select>
+            <label for="Album">Album</label>
+            <select id="Album" name="AlbumId" class="form-control">
+                <option selected disabled> Chhose an album...</option>
+                @foreach (var album in Model.Albums)
+                {
+                    <option value="@album.Id">@album.Title</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Create</button>
+    </div>
+</form>
