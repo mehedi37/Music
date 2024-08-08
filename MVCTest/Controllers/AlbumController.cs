@@ -16,6 +16,7 @@ namespace MVCTest.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(Album album)
         {
             if (!ModelState.IsValid)

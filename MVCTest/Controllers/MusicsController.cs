@@ -9,12 +9,12 @@ namespace MVCTest.Controllers
 {
     public class MusicsController(IMusicsRepo musicsRepo, ApplicationDbContext context) : Controller
     {
-        private readonly IMusicsRepo _musicsRepo = musicsRepo; 
+        private readonly IMusicsRepo _musicsRepo = musicsRepo;
         private readonly ApplicationDbContext _context = context;
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Musics> musics =  await _musicsRepo.GetAll();
+            IEnumerable<Musics> musics = await _musicsRepo.GetAll();
             return View(musics);
         }
 
@@ -25,6 +25,7 @@ namespace MVCTest.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Musics musics)
         {
             if (!ModelState.IsValid)

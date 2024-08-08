@@ -13,9 +13,11 @@ namespace MVCTest.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(Artist artist)
-        {   
-            if (!ModelState.IsValid) {
+        {
+            if (!ModelState.IsValid)
+            {
                 return View(artist);
             }
             _artistRepo.Add(artist);
